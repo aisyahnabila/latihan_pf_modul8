@@ -25,11 +25,20 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/profile', [ProfileController::class,])->name('profile');
-    Route::resource('employees', EmployeeController::class);
-});
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('/home', [HomeController::class, 'index'])->name('home');
+//     Route::get('profile', [ProfileController::class,])->name('profile');
+//     Route::resource('employees', EmployeeController::class);
+// });
+
+// Home Controller
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+// Profile Controller
+Route::get('/profile', ProfileController::class)->name('profile');
+
+// Employee Controller
+Route::resource('employees', EmployeeController::class);
 
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
